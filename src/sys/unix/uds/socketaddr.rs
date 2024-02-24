@@ -3,7 +3,7 @@ use std::os::unix::ffi::OsStrExt;
 use std::path::Path;
 use std::{ascii, fmt};
 
-use crate::sys::uds::path_offset;
+use crate::sys::unix::uds::path_offset;
 
 /// An address associated with a `mio` specific Unix socket.
 ///
