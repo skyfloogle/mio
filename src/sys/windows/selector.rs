@@ -10,6 +10,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
+use crate::sys::windows::Overlapped;
 use windows_sys::Win32::Foundation::{
     ERROR_INVALID_HANDLE, ERROR_IO_PENDING, HANDLE, STATUS_CANCELLED, WAIT_TIMEOUT,
 };
@@ -362,8 +363,9 @@ impl Selector {
 }
 
 cfg_io_source! {
-    use super::{InternalState, Overlapped};
     use crate::Token;
+
+    use super::InternalState;
 
     impl Selector {
         pub(super) fn register(
